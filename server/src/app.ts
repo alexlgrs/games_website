@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 import userRoutes from "./routes/UserRoutes";
+import authRoutes from "./routes/AuthRoutes"
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(
 );
 
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes)
 
 app.get("/{*any}", (req, res) => {
   res.sendFile(
