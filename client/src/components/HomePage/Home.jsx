@@ -1,8 +1,7 @@
 import './Home.css';
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import UserNavbar from '../UserNavbar/UserNavbar';
-import logoAmiko from '../../assets/logo/navbar_logo_amiko.png';
+import UserMenu from '../UserMenu/UserMenu';
 
 function Home() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -18,27 +17,26 @@ function Home() {
         localStorage.removeItem("token");
         navigate("/auth");
     }
+
     return (
         <div className="min-h-screen bg-[#FDFBF7] relative">
             <div className="w-full px-[2vw] pt-[2vh] flex justify-center items-start">
-                <img src={logoAmiko} className="w-[10vw] h-auto" alt="logo" />
+                <img src='../../assets/logo/navbar_logo_amiko.png' className="w-[10vw] h-auto" alt="logo" />
                 <div className="absolute right-[2vw] top-[2vh]">
-                    <UserNavbar user={storedUser} />
+                    <UserMenu user={storedUser} onLogout={handleLogout} />
                 </div>
             </div>
 
-            
+            <div className="absolute left-[2vw] top-[12vh] w-[200px] h-[75vh] bg-[#E6D5B8] rounded-[40px] p-5 flex flex-col gap-4 shadow-sm">
+                <button className="w-full py-3 bg-[#D9C5A3] text-[#5D4037] rounded-2xl font-bold text-sm hover:bg-[#CCB896] transition-colors shadow-sm">
+                    Jeux solo
+                </button>
+                <button className="w-full py-3 bg-[#D9C5A3] text-[#5D4037] rounded-2xl font-bold text-sm hover:bg-[#CCB896] transition-colors shadow-sm">
+                    Quêtes
+                </button>
+            </div>
         </div>
     );
 }
 
-/*
-<div className="flex flex-col items-center justify-center mt-[20vh] gap-6">
-                <h1 className="text-[#5D4037] text-4xl font-bold">Bonjour {storedUser?.displayName}</h1>
-                <button onClick={handleLogout} className="bg-[#7B824B] hover:bg-[#5D4037] text-white px-8 py-2 rounded-full transition-colors font-bold shadow-md">
-                    Déconnexion
-                </button>
-            </div>
-
-*/
 export default Home;

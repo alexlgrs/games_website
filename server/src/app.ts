@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import userRoutes from "./routes/UserRoutes";
 import authRoutes from "./routes/AuthRoutes"
+import { Socket } from "net";
 
 dotenv.config();
 
@@ -11,6 +12,16 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+
+// // Ajout sockets
+
+// const server = require('http').Server(app)
+// const io = require('socket.io')(server)
+
+// io.on('connection', (socket: any) =>{   
+//   console.log(`Connecté au client ${socket.id}`)
+// })
 
 app.use(
   express.static(path.join(__dirname, "..", "..", "client", "build"))
@@ -26,3 +37,5 @@ app.get("/{*any}", (req, res) => {
 });
 
 export default app;
+
+
