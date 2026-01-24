@@ -2,6 +2,8 @@
 # Ignore les dossiers node_modules à la racine, dans /client et dans /server
 node_modules/
 
+*.json
+
 # --- PRODUCTION / BUILDS ---
 # On ignore les dossiers de compilation (React utilise souvent build ou dist)
 client/build/

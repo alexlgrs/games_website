@@ -4,7 +4,11 @@ import dotenv from "dotenv";
 import path from "path";
 import userRoutes from "./routes/UserRoutes";
 import authRoutes from "./routes/AuthRoutes"
+import gamesRoutes from "./routes/GamesRoutes"
+
 import { Socket } from "net";
+
+
 
 dotenv.config();
 
@@ -29,6 +33,7 @@ app.use(
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes)
+app.use("/api/games", gamesRoutes)
 
 app.get("/{*any}", (req, res) => {
   res.sendFile(
